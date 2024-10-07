@@ -3,6 +3,11 @@ plugins {
     id("org.springframework.boot")
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
