@@ -1,6 +1,7 @@
 plugins {
-    id("java")
+    java
     id("org.springframework.boot")
+    id("io.freefair.lombok")
 }
 
 java {
@@ -8,6 +9,9 @@ java {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
+
+group = "com.tdi"
+version = "1.0"
 
 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
