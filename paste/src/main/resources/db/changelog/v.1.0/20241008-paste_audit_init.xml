@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20241008:paste_audit_init" author="tdi">
+        <preConditions onFail="HALT" onFailMessage="Table 'paste_audit' already exists!">
+            <not>
+                <tableExists tableName="paste_audit"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="paste_audit"
+                     remarks="Information about the time and authorship of creation and changes of paste object">
+            <column name="id" type="int" remarks="Audit ID">
+                <constraints primaryKey="true"
+                             foreignKeyName="fk_paste_audit__id"
+                             referencedTableName="paste"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="created_at" type="timestamp with time zone" defaultValue="NOW()" remarks="Record creation time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="int" remarks="User who created the record">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp with time zone" defaultValue="NOW()" remarks="Record change time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="int" remarks="User who last updated the record">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

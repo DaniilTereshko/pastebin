@@ -1,9 +1,11 @@
 [versions]
 spring-boot = "3.3.4"
+lombok = "8.10.2"
 
 [libraries]
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot"}
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
+lombok-plugin = { group = "io.freefair.lombok", name = "io.freefair.lombok.gradle.plugin", version.ref = "lombok" }
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
