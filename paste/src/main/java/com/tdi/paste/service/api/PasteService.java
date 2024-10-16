@@ -1,4 +1,4 @@
-package com.tdi.paste.service;
+package com.tdi.paste.service.api;
 
 import com.tdi.paste.api.dto.PasteLinkDTO;
 import com.tdi.paste.api.request.CreatePasteRequest;
@@ -6,7 +6,7 @@ import com.tdi.paste.api.request.CreatePasteRequest;
 /**
  * An interface providing business logic for pastes.
  */
-public interface PasteService {
+public interface PasteService {//TODO переделать документацию
 
     /**
      * A method for saving a paste {@link com.tdi.paste.model.Paste}. The text is stored in a blob storage,
