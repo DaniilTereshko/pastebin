@@ -6,3 +6,6 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignore temp pastes dir
+paste/temporary_pastes

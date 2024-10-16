@@ -13,3 +13,9 @@ spring:
     username: paste
     password: paste
     driver-class-name: org.postgresql.Driver
+
+minio:
+  url: http://127.0.0.1:9000
+  access-name: minioadmin
+  access-secret: minioadmin
+  bucket: paste
