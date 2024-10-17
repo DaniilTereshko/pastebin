@@ -36,18 +36,17 @@ public class PasteServiceImpl implements PasteService {
         var paste = new Paste();
         var expirationDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(request.getExpirationDate()), ZoneOffset.UTC);//TODO date
         paste.setExpirationDate(expirationDate);
-        paste.setBlobStorageLink(file.getName());
         paste.setAudit(PasteAudit.onCreate(paste));
         var savedPaste = repository.save(paste);
 
-        return new PasteLinkDTO(savedPaste.getBlobStorageLink(), savedPaste.getExpirationDate());
+        return new PasteLinkDTO(file.getName(), savedPaste.getExpirationDate());
     }
 
     @Override
     @Transactional(readOnly = true)
     public PasteLinkDTO get(int id) {
         var paste = getOrThrow(id);
-        return new PasteLinkDTO(paste.getBlobStorageLink(), paste.getExpirationDate());
+        return new PasteLinkDTO(paste.getFileName(), paste.getExpirationDate());
     }
 
     private Paste getOrThrow(int id) {
