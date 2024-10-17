@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20241017:update_paste" author="tdi">
+        <preConditions onFail="HALT" onFailMessage="Table 'paste' not exists!">
+            <tableExists tableName="paste"/>
+        </preConditions>
+
+        <dropColumn tableName="paste" columnName="blob_storage_link"/>
+
+        <addColumn tableName="paste">
+            <column name="title" type="varchar(64)" remarks="Paste title">
+                <constraints nullable="false"/>
+            </column>
+            <column name="summary" type="varchar(256)" remarks="Paste summary"/>
+            <column name="bucket" type="varchar(64)" remarks="Paste bucket in the storage">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_name" type="varchar(40)" remarks="A unique file name with the paste text and the .txt extension">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="link_hash" type="varchar(8)" remarks="A unique hash link that provides the user with access to the paste">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

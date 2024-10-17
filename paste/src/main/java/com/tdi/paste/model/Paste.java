@@ -34,13 +34,24 @@ public class Paste implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
+    private String title;
+
+    private String summary;
+
+    @Column(nullable = false, updatable = false)
+    private String bucket;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private String fileName;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private String linkHash;
+
     private LocalDateTime expirationDate;
 
-    @Column(nullable = false, updatable = false, unique = true)
-    private String blobStorageLink;
-
     @OneToOne(
-            mappedBy = "id",
+            mappedBy = "paste",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )

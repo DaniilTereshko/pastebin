@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,8 +36,7 @@ public class PasteAudit implements Serializable {
 
     @Id
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Paste id;
+    private Paste paste;
 
     @Column(nullable = false, updatable = false)
     @CreatedDate
@@ -58,7 +56,7 @@ public class PasteAudit implements Serializable {
 
     public static PasteAudit onCreate(Paste paste) {
         var audit = new PasteAudit();
-        audit.setId(paste);
+        audit.setPaste(paste);
         return audit;
     }
 
@@ -67,7 +65,7 @@ public class PasteAudit implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PasteAudit pasteAudit = (PasteAudit) o;
-        return getId().equals(pasteAudit.getId());
+        return getPaste().equals(pasteAudit.getPaste());
     }
 
     @Override
