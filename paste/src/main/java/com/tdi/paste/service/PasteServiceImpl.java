@@ -2,9 +2,10 @@ package com.tdi.paste.service;
 
 import com.tdi.paste.api.dto.PasteLinkDTO;
 import com.tdi.paste.api.request.CreatePasteRequest;
+import com.tdi.paste.config.properties.S3Config;
 import com.tdi.paste.model.Paste;
 import com.tdi.paste.model.PasteAudit;
-import com.tdi.paste.repository.PasteRepository;
+import com.tdi.paste.repository.api.PasteRepository;
 import com.tdi.paste.service.api.PasteService;
 import com.tdi.paste.service.api.StorageService;
 import com.tdi.paste.service.api.TemporaryStorageService;
@@ -26,6 +27,8 @@ public class PasteServiceImpl implements PasteService {
     private final TemporaryStorageService temporaryStorageService;
     private final StorageService storageService;
     private final PasteRepository repository;
+    private final HashGenerator hashGenerator;
+    private final S3Config s3Config;
 
     @Override
     public PasteLinkDTO save(CreatePasteRequest request) {
@@ -34,9 +37,19 @@ public class PasteServiceImpl implements PasteService {
         uploadPaste(file);
 
         var paste = new Paste();
-        var expirationDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(request.getExpirationDate()), ZoneOffset.UTC);//TODO date
-        paste.setExpirationDate(expirationDate);
+
+        paste.setTitle(request.getTitle());
+        paste.setSummary(request.getSummary());
+        paste.setBucket(s3Config.getBucket());
+        paste.setFileName(file.getName());
         paste.setAudit(PasteAudit.onCreate(paste));
+        paste.setLinkHash(hashGenerator.generateHash());
+
+        if(request.getExpirationDate() != null) {
+            var expirationDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(request.getExpirationDate()), ZoneOffset.UTC);//TODO date
+            paste.setExpirationDate(expirationDate);
+        }
+
         var savedPaste = repository.save(paste);
 
         return new PasteLinkDTO(file.getName(), savedPaste.getExpirationDate());
