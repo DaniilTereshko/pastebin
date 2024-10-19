@@ -1,4 +1,4 @@
-package com.tdi.paste.repository;
+package com.tdi.paste.repository.api;
 
 import com.tdi.paste.model.Paste;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -45,7 +45,7 @@ public class Paste implements Serializable {
     @Column(nullable = false, unique = true, updatable = false)
     private String fileName;
 
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(nullable = false, unique = true, updatable = false)//TODO nullable = false
     private String linkHash;
 
     private LocalDateTime expirationDate;
