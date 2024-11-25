@@ -5,6 +5,7 @@ import com.tdi.paste.service.api.TemporaryStorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class FileStorageService implements TemporaryStorageService {
         String fileName = String.format(FILE_NAME_TEMPLATE, UUID.randomUUID());
         File file = new File(directory, fileName);
 
-        try (FileWriter writer = new FileWriter(file)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(request.getText());
             log.info("Successfully saved paste to temporary file: {}", file.getAbsolutePath());
         } catch (IOException ex) {

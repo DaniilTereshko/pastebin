@@ -9,5 +9,6 @@
     <include file="20241017-update_paste.xml" relativeToChangelogFile="true"/>
     <include file="20241017-update_paste_audit.xml" relativeToChangelogFile="true"/>
     <include file="20241017-create-link-hash-seq.xml" relativeToChangelogFile="true"/>
+    <include file="20241030-change_date_data_type.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
