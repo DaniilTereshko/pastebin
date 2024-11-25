@@ -8,7 +8,6 @@ import java.io.File;
  * A service designed for temporarily saving pastes in text files.
  */
 public interface TemporaryStorageService {
-
     /**
      * Accepts a request to create a paste and saves the paste as a temporary text file
      * based on the provided data to temporary directory. This temporary text file is then used by the

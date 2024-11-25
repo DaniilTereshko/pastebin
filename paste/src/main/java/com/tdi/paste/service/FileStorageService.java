@@ -14,11 +14,10 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class FileStorageService implements TemporaryStorageService {
-
-    public static final String ERROR_WRITING_FILE_TO_TEMP_DIR_MESSAGE = "Error writing file to storage.";
-    public static final String TEMP_DIR_CREATION_FAILED_MESSAGE = "Could not create directory for pastes.";
-    public static final String FILE_NAME_TEMPLATE = "%s.txt";
-    public static final String TEMP_PASTES_DIR = "./paste/temporary_pastes";
+    private static final String ERROR_WRITING_FILE_TO_TEMP_DIR_MESSAGE = "Error writing file to storage.";
+    private static final String TEMP_DIR_CREATION_FAILED_MESSAGE = "Could not create directory for pastes.";
+    private static final String FILE_NAME_TEMPLATE = "%s.txt";
+    private static final String TEMP_PASTES_DIR = "./paste/temporary_pastes";
 
     @Override
     public File saveToDirectory(CreatePasteRequest request) {

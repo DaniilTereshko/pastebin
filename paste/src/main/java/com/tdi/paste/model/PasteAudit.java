@@ -30,7 +30,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class PasteAudit implements Serializable {
-
     @Serial
     private static final long serialVersionUID = 1L;
 

@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Schema(description = "Base paste DTO.")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 public abstract class PasteBaseDTO {
     @Schema(description = "Unique identifier for the paste.")

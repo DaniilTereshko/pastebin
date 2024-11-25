@@ -8,7 +8,8 @@ import lombok.Setter;
 import java.util.List;
 
 @Schema(description = "DTO representing paginated response data.")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 public class PageDTO<C> {
     @Schema(description = "Current page number (zero-based).")

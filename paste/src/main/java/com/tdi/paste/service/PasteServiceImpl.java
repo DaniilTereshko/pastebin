@@ -51,7 +51,7 @@ public class PasteServiceImpl implements PasteService {
         paste.setAudit(PasteAudit.onCreate(paste));
         paste.setLinkHash(hashGenerator.generateHash());
 
-        if(request.getExpirationDate() != null) {
+        if (request.getExpirationDate() != null) {
             var expirationDate = LocalDateTime.ofInstant(Instant.ofEpochSecond(request.getExpirationDate()), ZoneOffset.UTC);//TODO date
             paste.setExpirationDate(expirationDate);
         }

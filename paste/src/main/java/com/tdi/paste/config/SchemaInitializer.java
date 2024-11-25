@@ -13,16 +13,15 @@ import java.sql.SQLException;
 @Component
 @AllArgsConstructor
 public class SchemaInitializer implements BeanPostProcessor {
-
-    public static final String CREATE_SCHEMA_SQL = "CREATE SCHEMA IF NOT EXISTS %s";
+    private static final String CREATE_SCHEMA_SQL = "CREATE SCHEMA IF NOT EXISTS %s";
     private final LiquibaseProperties liquibaseProperties;
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if(bean instanceof DataSource ds) {
-            try(
+        if (bean instanceof DataSource ds) {
+            try (
                     var con = ds.getConnection();
-                    var statement = con.createStatement();
+                    var statement = con.createStatement()
             ) {
                 statement.execute(String.format(CREATE_SCHEMA_SQL, liquibaseProperties.getSchemaName()));
             } catch (SQLException ex) {

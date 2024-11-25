@@ -23,10 +23,9 @@ import java.io.InputStreamReader;
 @Service
 @AllArgsConstructor
 public class MinioStorageService implements StorageService {
-
-    public static final String FAILED_PASTE_UPLOAD_MESSAGE = "Failed to upload paste";
-    public static final String PASTE_CONTENT_TYPE = "text/plain";
-    public static final int PART_SIZE = -1;
+    private static final String FAILED_PASTE_UPLOAD_MESSAGE = "Failed to upload paste";
+    private static final String PASTE_CONTENT_TYPE = "text/plain";
+    private static final int PART_SIZE = -1;
     private final S3Config config;
     private final MinioClient minioClient;
 
@@ -51,11 +50,11 @@ public class MinioStorageService implements StorageService {
 
         StringBuilder result = new StringBuilder();
 
-        try(var reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(objectResponse.readAllBytes())))) {
+        try (var reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(objectResponse.readAllBytes())))) {
             String lineSeparator = System.lineSeparator();
             String line;
 
-            while((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) {
                 result.append(line);
                 result.append(lineSeparator);
             }

@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "minio")
 public class S3Config {
-
     private String url;
     private String accessName;
     private String accessSecret;

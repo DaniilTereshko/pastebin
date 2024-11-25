@@ -11,6 +11,5 @@ import java.util.Optional;
  */
 @Repository
 public interface PasteRepository extends JpaRepository<Paste, Integer> {
-
     Optional<Paste> findByLinkHash(String linkHash);
 }

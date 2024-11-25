@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Schema(description = "DTO representing a paste reference object with link.")
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 public class PasteReferenceDTO extends PasteBaseDTO {
     @Schema(description = "Link to the paste content.")

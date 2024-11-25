@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 @EnableConfigurationProperties
 public class LiquibaseProperties {
-
     @Value("${spring.liquibase.default-schema}")
     private String schemaName;
 }

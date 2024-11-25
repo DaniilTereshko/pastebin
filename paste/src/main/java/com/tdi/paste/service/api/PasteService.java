@@ -8,10 +8,10 @@ import com.tdi.paste.api.request.CreatePasteRequest;
 
 /**
  * An interface providing business logic for pastes.
+ *
  * @author Daniil Tereshko
  */
 public interface PasteService {
-
     /**
      * Saves a paste by storing the text in blob storage and its metadata in the database.
      * This method generates a short link for the user, which can be shared to access the paste.
