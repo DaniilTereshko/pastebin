@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 public class PasteLinkDTO {
-
     @Schema(description = "Link to a paste.")
     private String link;
 

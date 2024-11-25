@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @AllArgsConstructor
 public class HashSeqRepositoryImpl implements HashSeqRepository {
-
-    public static final String SELECT_NEXTVAL_LINK_HASH_SEQ = "SELECT nextval('link_hash_seq')";
+    private static final String SELECT_NEXTVAL_LINK_HASH_SEQ = "SELECT nextval('link_hash_seq')";
     private final JdbcTemplate jdbcTemplate;
 
     @Override

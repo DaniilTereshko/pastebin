@@ -8,5 +8,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.liquibase:liquibase-core")
     implementation("io.minio:minio:8.5.12")
+    implementation("org.modelmapper:modelmapper:3.2.1")
+
+
     runtimeOnly("org.postgresql:postgresql")
 }

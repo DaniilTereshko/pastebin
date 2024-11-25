@@ -10,8 +10,7 @@ import java.util.Base64;
 @Component
 @AllArgsConstructor
 public class HashGenerator {
-
-    public static final int INT_BYTE_SIZE = 4;
+    private static final int INT_BYTE_SIZE = 4;
     private final HashSeqRepository hashSeqRepository;
 
     public String generateHash() {

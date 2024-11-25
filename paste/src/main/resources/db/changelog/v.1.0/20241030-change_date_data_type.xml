@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20241030:change_date_data_type:paste_audit" author="tdi">
+        <preConditions onFail="HALT" onFailMessage="Table 'paste_audit' not exists!">
+            <tableExists tableName="paste_audit"/>
+        </preConditions>
+
+        <modifyDataType tableName="paste_audit" columnName="created_at" newDataType="timestamp without time zone"/>
+        <modifyDataType tableName="paste_audit" columnName="updated_at" newDataType="timestamp without time zone"/>
+    </changeSet>
+
+    <changeSet id="20241030:change_date_data_type:paste" author="tdi">
+        <preConditions onFail="HALT" onFailMessage="Table 'paste' not exists!">
+            <tableExists tableName="paste"/>
+        </preConditions>
+
+        <modifyDataType tableName="paste" columnName="expiration_date" newDataType="timestamp without time zone"/>
+    </changeSet>
+</databaseChangeLog>

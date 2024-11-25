@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @Configuration
 public class SecurityConfiguration {
-
     @Bean
     public AuditorAware<Integer> auditorProvider() {
         return () -> Optional.of(1); //TODO заменить при реализации SecurityContext'а

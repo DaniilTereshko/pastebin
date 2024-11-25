@@ -5,6 +5,7 @@ import com.tdi.paste.service.api.TemporaryStorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,11 +14,10 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class FileStorageService implements TemporaryStorageService {
-
-    public static final String ERROR_WRITING_FILE_TO_TEMP_DIR_MESSAGE = "Error writing file to storage.";
-    public static final String TEMP_DIR_CREATION_FAILED_MESSAGE = "Could not create directory for pastes.";
-    public static final String FILE_NAME_TEMPLATE = "%s.txt";
-    public static final String TEMP_PASTES_DIR = "./paste/temporary_pastes";
+    private static final String ERROR_WRITING_FILE_TO_TEMP_DIR_MESSAGE = "Error writing file to storage.";
+    private static final String TEMP_DIR_CREATION_FAILED_MESSAGE = "Could not create directory for pastes.";
+    private static final String FILE_NAME_TEMPLATE = "%s.txt";
+    private static final String TEMP_PASTES_DIR = "./paste/temporary_pastes";
 
     @Override
     public File saveToDirectory(CreatePasteRequest request) {
@@ -28,7 +28,7 @@ public class FileStorageService implements TemporaryStorageService {
         String fileName = String.format(FILE_NAME_TEMPLATE, UUID.randomUUID());
         File file = new File(directory, fileName);
 
-        try (FileWriter writer = new FileWriter(file)) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(request.getText());
             log.info("Successfully saved paste to temporary file: {}", file.getAbsolutePath());
         } catch (IOException ex) {

@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreatePasteRequest {
-
     @Schema(
             description = "Paste title",
             requiredMode = Schema.RequiredMode.REQUIRED,

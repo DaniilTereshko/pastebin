@@ -3,7 +3,6 @@ package com.tdi.paste.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,7 +25,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Paste implements Serializable {
-
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -45,14 +43,13 @@ public class Paste implements Serializable {
     @Column(nullable = false, unique = true, updatable = false)
     private String fileName;
 
-    @Column(nullable = false, unique = true, updatable = false)//TODO nullable = false
+    @Column(nullable = false, unique = true, updatable = false)
     private String linkHash;
 
     private LocalDateTime expirationDate;
 
     @OneToOne(
             mappedBy = "paste",
-            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
     private PasteAudit audit;
