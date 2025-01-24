@@ -46,9 +46,9 @@ public class MinioStorageService implements StorageService {
     }
 
     public String getPaste(String bucket, String object) {
-        GetObjectResponse objectResponse = getObject(bucket, object);
+        var objectResponse = getObject(bucket, object);
 
-        StringBuilder result = new StringBuilder();
+        var result = new StringBuilder();
 
         try (var reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(objectResponse.readAllBytes())))) {
             String lineSeparator = System.lineSeparator();

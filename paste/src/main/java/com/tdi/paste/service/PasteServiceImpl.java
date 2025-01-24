@@ -14,7 +14,6 @@ import com.tdi.paste.service.api.PasteService;
 import com.tdi.paste.service.api.StorageService;
 import com.tdi.paste.service.api.TemporaryStorageService;
 import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

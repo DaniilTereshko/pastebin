@@ -14,7 +14,7 @@ public class HashGenerator {
     private final HashSeqRepository hashSeqRepository;
 
     public String generateHash() {
-        Integer linkHashId = hashSeqRepository.getNextLinkHashId();
+        var linkHashId = hashSeqRepository.getNextLinkHashId();
         return Base64.getEncoder()
                 .encodeToString(ByteBuffer.allocate(INT_BYTE_SIZE)
                         .putInt(linkHashId)

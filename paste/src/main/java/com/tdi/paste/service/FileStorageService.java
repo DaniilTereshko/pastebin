@@ -21,12 +21,12 @@ public class FileStorageService implements TemporaryStorageService {
 
     @Override
     public File saveToDirectory(CreatePasteRequest request) {
-        File directory = new File(TEMP_PASTES_DIR);
+        var directory = new File(TEMP_PASTES_DIR);
 
         createDirectory(directory);
 
-        String fileName = String.format(FILE_NAME_TEMPLATE, UUID.randomUUID());
-        File file = new File(directory, fileName);
+        var fileName = String.format(FILE_NAME_TEMPLATE, UUID.randomUUID());
+        var file = new File(directory, fileName);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(request.getText());
